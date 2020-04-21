@@ -12,7 +12,6 @@
 #import <ImageIO/ImageIO.h>
 #import "NSData+ImageContentType.h"
 #import "UIImage+MultiFormat.h"
-#import "DXCacheImageTool.h"
 
 #if SD_UIKIT || SD_WATCH
 static const size_t kBytesPerPixel = 4;
@@ -221,7 +220,8 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
         CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host;
         bitmapInfo |= hasAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst;
         
-        if ([[DXCacheImageTool shareCacheImageTool].topicModel.isBlack isEqualToString:@"1"]) {
+        NSString *isBlack = [[NSUserDefaults standardUserDefaults] objectForKey:@"isBack"];
+        if (isBlack isEqualToString:@"1"]) {
             colorspaceRef = CGColorSpaceCreateDeviceGray();
             bitmapInfo = kCGImageAlphaNone;
         }
