@@ -221,7 +221,7 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
         bitmapInfo |= hasAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst;
         
         NSString *isBlack = [[NSUserDefaults standardUserDefaults] objectForKey:@"isBack"];
-        if (isBlack isEqualToString:@"1"]) {
+        if ([isBlack isEqualToString:@"1"]) {
             colorspaceRef = CGColorSpaceCreateDeviceGray();
             bitmapInfo = kCGImageAlphaNone;
         }
